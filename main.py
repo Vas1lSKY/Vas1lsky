@@ -5,7 +5,29 @@ import logging
 import sqlite3
 import os
 import time  # Добавлен импорт модуля time
+from flask import Flask
+from threading import Thread
+# Инициализация Flask-приложения
+app = Flask(__name__)
+# Простой маршрут для проверки работоспособности
+@app.route('/')
+def home():
+    return "Hello, your bot is running!"
 
+# Запуск Flask-приложения в отдельном потоке
+def run_flask():
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 4000)))
+# Запуск Telegram-бота
+def run_bot():
+    bot.polling(none_stop=True)
+
+if __name__ == "__main__":
+    # Запускаем Flask в отдельном потоке
+    flask_thread = Thread(target=run_flask)
+    flask_thread.start()
+
+    # Запускаем Telegram-бота
+    run_bot()
 
 # Настройка логирования
 logging.basicConfig(

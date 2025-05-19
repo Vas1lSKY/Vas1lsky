@@ -9,9 +9,6 @@ from flask import Flask
 from threading import Thread
 app = Flask(__name__)
 # Обработчик команды /start
-@bot.message_handler(commands=['start'])
-def start(message):
-    bot.send_message(message.chat.id, "Привет! Я бот.")
 
 # Роут для вебхука
 @app.route('/webhook', methods=['POST'])

@@ -7,6 +7,10 @@ import os
 import time  # Добавлен импорт модуля time
 from flask import Flask
 from threading import Thread
+# Токен бота
+TOKEN = '7828109094:AAH9dvP1jfeWjBPXGajs3hsYYn9kH4-7Nns'
+bot = telebot.TeleBot(TOKEN)
+
 # Инициализация Flask-приложения
 app = Flask(__name__)
 # Простой маршрут для проверки работоспособности
@@ -108,9 +112,6 @@ def init_db():
 # Инициализация базы данных
 init_db()
 
-# Токен бота
-TOKEN = '7828109094:AAH9dvP1jfeWjBPXGajs3hsYYn9kH4-7Nns'
-bot = telebot.TeleBot(TOKEN)
 
 user_context = {}
 

@@ -7,6 +7,26 @@ import os
 import time  # Добавлен импорт модуля time
 from flask import Flask
 from threading import Thread
+app = Flask(__name__)
+# Обработчик команды /start
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "Привет! Я бот.")
+
+# Роут для вебхука
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    update = telebot.types.Update.de_json(request.stream.read().decode('utf-8'))
+    bot.process_new_updates([update])
+    return 'OK', 200
+
+if __name__ == "__main__":
+    # Установите вебхук
+    bot.remove_webhook()
+    bot.set_webhook(url='https://your-domain.com/webhook ')
+    
+    # Запустите Flask-приложение
+    app.run(host='0.0.0.0', port=10000)
 # Токен бота
 TOKEN = '7828109094:AAH9dvP1jfeWjBPXGajs3hsYYn9kH4-7Nns'
 bot = telebot.TeleBot(TOKEN)

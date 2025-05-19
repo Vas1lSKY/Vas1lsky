@@ -6,17 +6,17 @@ import sqlite3
 import os
 import time  # Добавлен импорт модуля time
 
-const express = require ( 'express' ) 
-константа приложение = экспресс ( ) 
-константный порт = процесс.окружение.ПОРТ || 4000​​​​   
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 4000 
 
-приложение . получить ( '/' , ( req , res ) => {   
-  res.send ( ' Привет , мир!' )
-} )
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-приложение . прослушивание ( порт , ( ) => {   
-  console . log ( ` Пример приложения, прослушивающего порт ${ port } ` )
-} )
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 # Настройка логирования
 logging.basicConfig(
     filename='bot.log',

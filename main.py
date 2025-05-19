@@ -112,6 +112,7 @@ def create_main_menu_markup():
     markup.add(button_booking, button_tic_tac_toe)
     return markup
 
+from utils import create_vertical_markup, safe_handler  # Импортируем функцию
 
 @bot.message_handler(func=lambda m: m.text == "📱 Продажа техники")
 def sell_technology(message):
